@@ -21,12 +21,6 @@ def teardown_db(exception):
     storage.close()
 
 
-@app.route('/', strict_slashes=False)
-def index():
-    """returns Hello HBNB!"""
-    return 'Hello HBNB!'
-
-
 if __name__ == '__main__':
     app.run(
         host=os.getenv("HBNB_API_HOST", "0.0.0.0"),
