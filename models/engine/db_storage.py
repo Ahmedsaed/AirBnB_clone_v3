@@ -78,13 +78,10 @@ class DBStorage:
     def get(self, cls, id):
         """retrieve one object with id"""
         if cls and id:
-            tmp_obj = cls, __name__ + "." + id
-            count = self.all(cls)
-            for key in count:
-                if key == tmp_obj:
-                    return count[key]
-        else:
-            return None
+            fetch = "{}.{}".format(cls, id)
+            all_obj = self.all(cls)
+            return all_obj.get(fetch)
+        return None
 
     def count(self, cls=None):
         """class (optional)"""
