@@ -1,5 +1,5 @@
 entry_point = console.py
-PY_FILES := $(shell find . -type d -name 'tests' -prune -o -type f -name '*.py' -print)
+API_FILES := $(filter-out ./api/v1/views/__init__.py, $(shell find ./api -type f -name '*.py' -print))
 MAKEFLAGS += --silent
 PYTHON := python3
 
@@ -24,7 +24,7 @@ announce:
 
 check_style:
 	@$(MAKE) announce MESSAGE="Checking code style"
-	pycodestyle --first $(entry_point) models tests && \
+	pycodestyle --first $(entry_point) models tests $(API_FILES) && \
 	($(MAKE) announce MESSAGE="Code style OK" && exit 0) || \
 	($(MAKE) announce MESSAGE="Code style error" && exit 1)
 
