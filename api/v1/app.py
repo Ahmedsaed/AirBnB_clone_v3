@@ -13,6 +13,7 @@ app = Flask(__name__)
 app.register_blueprint(app_views)
 cors = CORS(app, resources={"/*": {"origins": "0.0.0.0"}})
 
+
 @app.errorhandler(404)
 def not_found_error(error):
     response = jsonify({"error": "Not found"})
