@@ -21,7 +21,7 @@ class User(BaseModel, Base):
         reviews = relationship("Review", backref="user")
     else:
         email = ""
-        password = ""
+        _password = ""
         first_name = ""
         last_name = ""
 
