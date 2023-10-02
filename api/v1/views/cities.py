@@ -1,5 +1,5 @@
 #!/usr/bin/python3
-"""Flask route that returns states as json"""
+"""Flask route that returns cities as json"""
 
 from api.v1.views import app_views
 from flask import abort, jsonify, request, make_response
